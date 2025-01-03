@@ -11,19 +11,21 @@ import logout from "../assets/icons/logout.png";
 import eyeHide from "../assets/icons/eye-hide.png";
 import eye from "../assets/icons/eye.png";
 import play from "../assets/icons/play.png";
+import fingerprint from "../assets/icons/fingerprint.png";
 
 export default {
-  play,
-  bookmark,
-  home,
-  plus,
-  profile,
-  leftArrow,
-  menu,
-  search,
-  upload,
-  rightArrow,
-  logout,
-  eyeHide,
-  eye,
+	play,
+	bookmark,
+	home,
+	plus,
+	profile,
+	leftArrow,
+	menu,
+	search,
+	upload,
+	rightArrow,
+	logout,
+	eyeHide,
+	eye,
+	fingerprint,
 };

@@ -1,6 +1,7 @@
 import { getCurrentUser } from "@/lib/appwrite";
 import { createContext, useContext, useState, useEffect } from "react";
 import { ReactNode } from "react";
+import * as LocalAuthentication from "expo-local-authentication";
 
 export interface GlobalContextType {
 	isLoggedIn: boolean;

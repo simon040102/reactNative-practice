@@ -34,10 +34,16 @@ const Profile = () => {
 	const { data: posts, reFetchDate } = useAppwrite(() =>
 		getUserPosts(user.$id)
 	);
-
+	const [refreshing, setRefreshing] = useState(false);
 	useEffect(() => {
 		reFetchDate();
 	}, [query]);
+
+	const onRefresh = async () => {
+		setRefreshing(true);
+		await reFetchDate();
+		setRefreshing(false);
+	};
 
 	const logout = async () => {
 		await signOut();
@@ -107,6 +113,9 @@ const Profile = () => {
 						/>
 					);
 				}}
+				refreshControl={
+					<RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
+				}
 			/>
 		</SafeAreaView>
 	);

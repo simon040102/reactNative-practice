@@ -18,6 +18,11 @@ const VideoCard = ({ item }: VideoCardProps) => {
 	} = item;
 	const [play, setPlay] = useState(false);
 
+	const player = useVideoPlayer(video, (player) => {
+		player.loop = false;
+		// player.play();
+	});
+
 	return (
 		<View className="flex-col items-center px-4 mb-14">
 			<View className="flex-row gap-3 items-start">
@@ -45,30 +50,28 @@ const VideoCard = ({ item }: VideoCardProps) => {
 			</View>
 			<View className="h-60 w-full ">
 				{play ? (
-					// <VideoView
-					// 	className="w-full h-60 rounded-xl mt-3 "
-					// 	style={{ zIndex: 50, width: "100%", height: 240, borderRadius: 20 }}
-					// 	player={player}
-					// 	allowsFullscreen
-					// 	allowsPictureInPicture
-					// 	startsPictureInPictureAutomatically
-					// 	nativeControls
-
-					// />
-					<Video
-						source={{ uri: video }}
-						className="w-full h-60 rounded-xl mt-3 z-50"
-						style={{ zIndex: 50, width: "100%", height: 240 }}
-						resizeMode={ResizeMode.CONTAIN}
-						useNativeControls
-						shouldPlay
-						onPlaybackStatusUpdate={(status: any) => {
-							if (status.didJustFinish) {
-								setPlay(false);
-							}
-						}}
+					<VideoView
+						className="w-full h-60 rounded-xl mt-3 "
+						style={{ zIndex: 50, width: "100%", height: 240, borderRadius: 20 }}
+						player={player}
+						allowsFullscreen
+						allowsPictureInPicture
+						startsPictureInPictureAutomatically
+						nativeControls
 					/>
 				) : (
+					// <Video
+					// 	source={{ uri: video }}
+					// 	className="w-full h-60 rounded-xl mt-3 z-50"
+					// 	style={{ zIndex: 50, width: "100%", height: 240 }}
+					// 	resizeMode={ResizeMode.CONTAIN}
+					// 	useNativeControls
+					// 	onPlaybackStatusUpdate={(status: any) => {
+					// 		if (status.didJustFinish) {
+					// 			setPlay(false);
+					// 		}
+					// 	}}
+					// />
 					<TouchableOpacity
 						activeOpacity={0.7}
 						className="w-full h-60 rounded-xl mt-3 relative justify-center items-center"
